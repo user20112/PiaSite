@@ -53,17 +53,6 @@
     </script>
 </head><!--/head-->
 <body>
-<div id="preloader"></div>
-    <header class="navbar navbar-inverse navbar-fixed-top " role="banner">
-       		<div id="nav-placeholder" class="collapse navbar-collapse">
-			<script>
-			$(function(){
-			$("#nav-placeholder").load("nav.html");
-			});
-			</script>
-			</div>
-    </header><!--/header-->
-
     <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -72,9 +61,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">Pia's Page</h2>
-                                    <hr>
-                                    <p>Youve dealt with my stupidity i figuared you deserved something for that :3</p>
+                                    <h2 class="main-title" Id="Title" >Pia Site</h2>
+									<p>You deserve something for dealing with me</p>
                                 </div>
                             </div>   
                         </div>
@@ -87,41 +75,65 @@
     <div id="content-wrapper">
         <section id="about-us" class="white">
             <div class="container">
-                <div class="gap"></div>
-				
                 <div class="row">
-                <div class="col-md-12 fade-up">
-                       
-                 </div>
+				<div class="center">
+                 <section id="CheerMeUp"></section>
+				 <button type="button" class="btn btn-dark" onclick="GetCheer()">Still sad? get another one :3</button>
+				</div>
                 </div>
-				<div class="row">
-                    <div class="col-md-12 fade-up">
-                       
-                    </div>
-                    
+            </div>   
+            <div class="container">
+                <div class="row">
+				<div class="center">
+                 <section id="Dates"></section>
+				 <button type="button" class="btn btn-dark" onclick="GetDate()">Want another memory Click me!</button>
+				</div>
+                </div>
+            </div>        
+            <div class="container">
+                <div class="row">
+				<div class="center">
+                 <section id="ReasonsWhy"></section>
+				 <button type="button" class="btn btn-dark" onclick="GetReason()">Need more reasons i love you just click me :3</button>
+				</div>
                 </div>
             </div>      
         </section>
+		<section id="single-quote" class="divider-section"> 	            	        
+	            <div class="container">
+	            	<div class="gap"></div> 
+	                <div class="row">                        
+	                    <div class='col-md-offset-2 col-md-8 fade-up'>
+	                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+	                            <div class="carousel-inner">
+	                                <div class="item active">
+	                                    <blockquote>
+	                                        <div class="row">
+	                                            <div class="col-sm-3 text-center">
+	                                                
+	                                            </div>
+	                                            <div class="col-sm-9">
+	                                                <p id="Qoute">He who has a why to live can bear almost any how.</p>
+	                                            </div>
+	                                        </div>
+	                                    </blockquote>
+	                                </div>	                                
+	                            </div>                                     
+	                        </div> 
+	                    </div>
+	                </div>
+	                <div class="gap"></div>
+	      		</div>
+  		</section>
     </div>
+	
 
-      <div id="footer-wrapper">
-        <section id="bottom" class="">
-            <div class="container">
-                <div class="row">
-                    <div >
-                        <h4>Remember i love you.</h4>
-                        <p>If you need me you can always reach me.</p>
-                    </div><!--/.col-md-3-->
-
-                </div>
-            </div>
-        </section><!--/#bottom-->
-
+    <div id="footer-wrapper">
         <footer id="footer" class="">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        Go to top of the page
+                       Go to top of the page
                     </div>
                     <div class="col-sm-6">
                         <ul class="pull-right">
@@ -138,74 +150,108 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>   
     <script src="js/init.js"></script>
-		<script>
+	<script>
 			window.onload = function() { OnLoad() };
-		var request;
-		var request2;		
-		var Fname="";
-		var Lname="";
-		var City="";
-		var State="";
-		var Address="";
-		var Zip="";
-		var CurrentForm=100;
-		var NonPlus=0;
-		var x=0;
+		var Qouterequest;
+		var Daterequest;
+		var Cheermeuprequest;
+		var Reasonrequest;
 		function OnLoad(){
-
-			// form data objects found at: 
-			// https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
-
-			document.getElementById("section_center").innerHTML = "loading authors......"; 
-			request = new XMLHttpRequest(); // message sent to server 
+			GetQoute();
+			GetCheer();
+			GetReason();
+			GetDate();
+		}
+		function GetQoute(){
+			Qouterequest = new XMLHttpRequest(); // message sent to server 
 			var fd = new FormData();  
-			fd.append("request", "GetProjects"); 
+			fd.append("request", "GetQoute"); 
 			fd.append("ID", "100"); 
-			request.onreadystatechange = ServerResponded; // setup callback (Asynchronous)
-			request.open("POST", "php/request.php"); // prepare POST message
-			request.send(fd); 
-			
-
-		}// end OnLoad
-
-	
-		function ServerResponded(){ // called when the server responds to message 
-			if(request.readyState !== XMLHttpRequest.DONE) { return; } 
-			if(request.status !== 200){ return; } // check for HTTP OK 
-
+			Qouterequest.onreadystatechange = QouteServerResponded; // setup callback (Asynchronous)
+			Qouterequest.open("POST", "php/request.php"); // prepare POST message
+			Qouterequest.send(fd);
+		}
+		function GetCheer(){
+			Cheermeuprequest = new XMLHttpRequest(); // message sent to server 
+			var fd = new FormData();  
+			fd.append("request", "GetCheer"); 
+			fd.append("ID", "100"); 
+			Cheermeuprequest.onreadystatechange = CheerServerResponded; // setup callback (Asynchronous)
+			Cheermeuprequest.open("POST", "php/request.php"); // prepare POST message
+			Cheermeuprequest.send(fd);
+		}
+		function GetReason(){
+			Reasonrequest = new XMLHttpRequest(); // message sent to server 
+			var fd = new FormData();  
+			fd.append("request", "GetReason"); 
+			fd.append("ID", "100"); 
+			Reasonrequest.onreadystatechange = ReasonServerResponded; // setup callback (Asynchronous)
+			Reasonrequest.open("POST", "php/request.php"); // prepare POST message
+			Reasonrequest.send(fd);
+		}
+		function GetDate(){
+			Daterequest = new XMLHttpRequest(); // message sent to server 
+			var fd = new FormData();  
+			fd.append("request", "GetDate"); 
+			fd.append("ID", "100"); 
+			Daterequest.onreadystatechange = DateServerResponded; // setup callback (Asynchronous)
+			Daterequest.open("POST", "php/request.php"); // prepare POST message
+			Daterequest.send(fd);
+		}
+		function QouteServerResponded(){ // called when the server responds to message 
+			if(Qouterequest.readyState !== XMLHttpRequest.DONE) { return; } 
+			if(Qouterequest.status !== 200){ return; } // check for HTTP OK 
 			var json_arr; 
 			var json; 
 
 			try{ 
-				json_arr = JSON.parse(request.responseText); 
+				json_arr = JSON.parse(Qouterequest.responseText); 
 			}catch(ex){
 				alert(ex.message);  
 			}
+			document.getElementById("Qoute").innerHTML =json_arr[0].Qoute;
+		}
+		function DateServerResponded(){ // called when the server responds to message 
+			if(Daterequest.readyState !== XMLHttpRequest.DONE) { return; } 
+			if(Daterequest.status !== 200){ return; } // check for HTTP OK 
+			var json_arr; 
+			var json; 
+			try{ 
+				json_arr = JSON.parse(Daterequest.responseText); 
+			}catch(ex){
+				alert(ex.message);  
+			}
+			document.getElementById("Dates").innerHTML ="<p>Date:"+json_arr[0].DateLocation+"</p><p>"+json_arr[0].WhatIThought+"</p>";
+			document.getElementById("Dates").style.height = "200px";
+			
+		}
+		function ReasonServerResponded(){ // called when the server responds to message 
+			if( Reasonrequest.readyState !== XMLHttpRequest.DONE) { return; } 
+			if( Reasonrequest.status !== 200){ return; } // check for HTTP OK 
+			var json_arr; 
+			var json; 
 
-			var i; 
-			var y;
-			var Section_data = '<div class="container">';
-			Section_data += '<div class="gap"></div>' ; 
-			for(i = 0; i*3 < json_arr.length; i++)
-			{
-			Section_data += '<div class="row">';
-				
-			for(y=0;y+i*3<json_arr.length&&y<3;y++)
-			{
-				var row = json_arr[i*3+y];
-				Section_data += '<div class="col-md-4 col-sm-6"><div class="service-block"> <div class="pull-left bounce-in"></div><div class="media-body fade-up">';
-				Section_data += '<h3 class="media-heading" id='+row.ProjectID+' >' + row.Title + "</h3>";
-				Section_data += '<p>'; 
-				Section_data += row.Description;  
-				Section_data += '</p></div></div></div>'; 
-				x=parseInt(row.ProjectID, 10);
+			try{ 
+				json_arr = JSON.parse( Reasonrequest.responseText); 
+			}catch(ex){
+				alert(ex.message);  
 			}
-				Section_data += '</div>';
+			document.getElementById("ReasonsWhy").innerHTML ="<p>"+json_arr[0].ReasonWhy+"</p>";
+			document.getElementById("ReasonsWhy").style.height = "50px";
+		}
+		function CheerServerResponded(){ // called when the server responds to message 
+			if(Cheermeuprequest.readyState !== XMLHttpRequest.DONE) { return; } 
+			if(Cheermeuprequest.status !== 200){ return; } // check for HTTP OK 
+			var json_arr; 
+			var json; 
+
+			try{ 
+				json_arr = JSON.parse(Cheermeuprequest.responseText); 
+			}catch(ex){
+				alert(ex.message);  
 			}
-			Section_data += '</div><div class="gap"></div>'; 
-			x+=1;
-			document.getElementById("section_center").innerHTML =Section_data; // display table 
-			document.getElementById("section_center").id ="services";
+			document.getElementById("CheerMeUp").innerHTML ="<p>YouCanDoIt:"+json_arr[0].YouCanDoIt+"</p><p>"+json_arr[0].CheerMeUp+"</p>"+'<div class="row"><img '+"style='height: 500px; width: 500px; object-fit: contain'"+' src="'+json_arr[0].ImagePath+'"></div>';
+			document.getElementById("CheerMeUp").style.height = "640px";
 		}
 	</script>
 </body>
