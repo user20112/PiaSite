@@ -166,7 +166,7 @@
 			Qouterequest = new XMLHttpRequest(); // message sent to server 
 			var fd = new FormData();  
 			fd.append("request", "GetQoute"); 
-			fd.append("ID", "100"); 
+			
 			Qouterequest.onreadystatechange = QouteServerResponded; // setup callback (Asynchronous)
 			Qouterequest.open("POST", "php/request.php"); // prepare POST message
 			Qouterequest.send(fd);
@@ -175,7 +175,7 @@
 			Cheermeuprequest = new XMLHttpRequest(); // message sent to server 
 			var fd = new FormData();  
 			fd.append("request", "GetCheer"); 
-			fd.append("ID", "100"); 
+			
 			Cheermeuprequest.onreadystatechange = CheerServerResponded; // setup callback (Asynchronous)
 			Cheermeuprequest.open("POST", "php/request.php"); // prepare POST message
 			Cheermeuprequest.send(fd);
@@ -184,7 +184,7 @@
 			Reasonrequest = new XMLHttpRequest(); // message sent to server 
 			var fd = new FormData();  
 			fd.append("request", "GetReason"); 
-			fd.append("ID", "100"); 
+			
 			Reasonrequest.onreadystatechange = ReasonServerResponded; // setup callback (Asynchronous)
 			Reasonrequest.open("POST", "php/request.php"); // prepare POST message
 			Reasonrequest.send(fd);
@@ -193,7 +193,7 @@
 			Daterequest = new XMLHttpRequest(); // message sent to server 
 			var fd = new FormData();  
 			fd.append("request", "GetDate"); 
-			fd.append("ID", "100"); 
+			
 			Daterequest.onreadystatechange = DateServerResponded; // setup callback (Asynchronous)
 			Daterequest.open("POST", "php/request.php"); // prepare POST message
 			Daterequest.send(fd);
